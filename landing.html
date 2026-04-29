@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diseño interior con criterio — Sesión de Claridad</title>
+<meta name="description" content="Asesoramiento en interiorismo, reformas y puesta a punto para vivienda o alquiler. Te damos claridad, dirección y un plan realista.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Paleta tierra y madera */
+    --cream: #F5EFE6;
+    --sand: #EADDC7;
+    --clay: #C97B5D;
+    --terracotta: #B85C3E;
+    --wood: #8B5A3C;
+    --walnut: #5C3A21;
+    --ink: #2A1F14;
+    --olive: #6B6A43;
+    --muted: #8A7A66;
+    --line: rgba(92, 58, 33, 0.15);
+
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --container: 1240px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    font-weight: 400;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Textura de papel sutil */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0 0.1 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  main, nav, footer { position: relative; z-index: 2; }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Tipografía base */
+  h1, h2, h3, h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: var(--walnut);
+  }
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  /* ========= NAV ========= */
+  nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 28px 0;
+  }
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--walnut);
+    letter-spacing: -0.01em;
+  }
+  .logo span { color: var(--terracotta); }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* ========= BUTTONS ========= */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .btn-primary {
+    background: var(--walnut);
+    color: var(--cream);
+  }
+  .btn-primary:hover {
+    background: var(--terracotta);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(184, 92, 62, 0.3);
+  }
+  .btn-primary .arrow {
+    transition: transform 0.35s;
+  }
+  .btn-primary:hover .arrow {
+    transform: translateX(4px);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--walnut);
+    border: 1px solid var(--walnut);
+  }
+  .btn-ghost:hover {
+    background: var(--walnut);
+    color: var(--cream);
+  }
+
+  /* ========= HERO ========= */
+  .hero {
+    padding: 140px 0 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .hero-text h1 {
+    font-size: clamp(44px, 6.5vw, 82px);
+    font-weight: 300;
+    margin: 28px 0 28px;
+  }
+  .hero-text h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--terracotta);
+  }
+  .hero-sub {
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 40px;
+    line-height: 1.55;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .hero-meta {
+    margin-top: 48px;
+    display: flex;
+    gap: 48px;
+  }
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-meta-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 32px;
+    color: var(--walnut);
+    line-height: 1;
+  }
+  .hero-meta-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative;
+    height: 580px;
+  }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--sand) 0%, var(--clay) 100%);
+    box-shadow: 0 40px 80px -30px rgba(92, 58, 33, 0.4);
+  }
+  .hero-img svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .hero-tag {
+    position: absolute;
+    bottom: -24px;
+    left: -24px;
+    background: var(--cream);
+    padding: 20px 28px;
+    border-radius: 4px;
+    box-shadow: 0 20px 50px rgba(92, 58, 33, 0.15);
+    max-width: 260px;
+    z-index: 3;
+  }
+  .hero-tag-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .hero-tag-text {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-style: italic;
+    color: var(--walnut);
+    line-height: 1.3;
+  }
+
+  /* Ornamento decorativo */
+  .hero::after {
+    content: "";
+    position: absolute;
+    right: -100px;
+    top: 80px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  /* ========= PROBLEMA ========= */
+  .problem {
+    background: var(--walnut);
+    color: var(--cream);
+    padding: 120px 0;
+    position: relative;
+  }
+  .problem .eyebrow {
+    color: var(--clay);
+  }
+  .problem .eyebrow::before { background: var(--clay); }
+  .problem-title {
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 300;
+    color: var(--cream);
+    max-width: 900px;
+    margin: 28px 0 72px;
+  }
+  .problem-title em {
+    font-style: italic;
+    color: var(--clay);
+  }
+  .problem-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 80px;
+    max-width: 980px;
+  }
+  .problem-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px 0;
+    border-top: 1px solid rgba(245, 239, 230, 0.15);
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--sand);
+  }
+  .problem-list li .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--clay);
+    min-width: 32px;
+  }
+  .problem-cta {
+    margin-top: 72px;
+    padding: 40px 48px;
+    background: rgba(245, 239, 230, 0.05);
+    border-left: 2px solid var(--clay);
+    max-width: 720px;
+  }
+  .problem-cta p {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.35;
+  }
+
+  /* ========= SESIÓN DE CLARIDAD (producto estrella) ========= */
+  .clarity {
+    padding: 140px 0;
+    background: var(--cream);
+    position: relative;
+  }
+  .clarity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 100px;
+    align-items: center;
+  }
+  .clarity-visual {
+    position: relative;
+    height: 620px;
+  }
+  .clarity-card-main {
+    position: absolute;
+    top: 0; left: 0;
+    width: 85%;
+    height: 480px;
+    background: linear-gradient(160deg, var(--clay) 0%, var(--terracotta) 100%);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px -30px rgba(184, 92, 62, 0.4);
+  }
+  .clarity-card-main svg {
+    width: 100%;
+    height: 100%;
+  }
+  .clarity-card-float {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 60%;
+    background: var(--sand);
+    padding: 32px 36px;
+    border-radius: 4px;
+    box-shadow: 0 20px 50px rgba(92, 58, 33, 0.2);
+  }
+  .clarity-card-float .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--terracotta);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .clarity-card-float h4 {
+    font-size: 24px;
+    font-style: italic;
+    color: var(--walnut);
+    margin-bottom: 12px;
+  }
+  .clarity-card-float p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .clarity-text h2 {
+    font-size: clamp(38px, 4.8vw, 62px);
+    font-weight: 300;
+    margin: 28px 0 32px;
+  }
+  .clarity-text h2 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .clarity-lead {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 36px;
+    line-height: 1.55;
+    max-width: 500px;
+  }
+  .clarity-features {
+    list-style: none;
+    margin-bottom: 44px;
+  }
+  .clarity-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+  }
+  .clarity-features li:last-child { border-bottom: none; }
+  .clarity-features .check {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--terracotta);
+    font-weight: 700;
+  }
+  .clarity-features strong {
+    color: var(--walnut);
+    font-weight: 600;
+  }
+  .clarity-price {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .clarity-duration {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 24px;
+    color: var(--walnut);
+  }
+  .clarity-separator {
+    width: 2px;
+    height: 20px;
+    background: var(--line);
+  }
+  .clarity-format {
+    font-size: 14px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ========= SERVICIOS ========= */
+  .services {
+    padding: 140px 0;
+    background: var(--sand);
+    position: relative;
+  }
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 80px;
+    align-items: end;
+  }
+  .services-header h2 {
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 300;
+    margin-top: 28px;
+  }
+  .services-header h2 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .services-header p {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 420px;
+    line-height: 1.55;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--cream);
+    padding: 40px 36px 44px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -20px rgba(92, 58, 33, 0.2);
+  }
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--terracotta);
+    margin-bottom: 32px;
+  }
+  .service-card h3 {
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+  .service-card h3 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .service-card p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .service-tag {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--walnut);
+    padding: 6px 14px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-weight: 500;
+  }
+  .service-number {
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--clay);
+    opacity: 0.7;
+  }
+
+  /* ========= PROCESO ========= */
+  .process {
+    padding: 140px 0;
+    background: var(--cream);
+  }
+  .process-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 90px;
+  }
+  .process-header h2 {
+    font-size: clamp(38px, 4.8vw, 62px);
+    font-weight: 300;
+    margin: 28px 0 20px;
+  }
+  .process-header h2 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .process-header p {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: relative;
+  }
+  .process-steps::before {
+    content: "";
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: repeating-linear-gradient(to right, var(--clay) 0 6px, transparent 6px 14px);
+    z-index: 0;
+  }
+  .process-step {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .process-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1.5px solid var(--clay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--terracotta);
+  }
+  .process-step h4 {
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+  .process-step p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.55;
+    padding: 0 10px;
+  }
+
+  /* ========= PRUEBA SOCIAL ========= */
+  .social {
+    padding: 140px 0;
+    background: var(--walnut);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .social-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 80px;
+  }
+  .social-header .eyebrow { color: var(--clay); }
+  .social-header .eyebrow::before { background: var(--clay); }
+  .social-header h2 {
+    color: var(--cream);
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 300;
+    margin-top: 28px;
+  }
+  .social-header h2 em {
+    font-style: italic;
+    color: var(--clay);
+  }
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .testimonial {
+    background: rgba(245, 239, 230, 0.06);
+    padding: 40px 36px;
+    border-radius: 4px;
+    border-top: 2px solid var(--clay);
+    position: relative;
+  }
+  .testimonial-quote {
+    font-family: var(--serif);
+    font-size: 34px;
+    color: var(--clay);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .testimonial-text {
+    font-size: 16px;
+    color: var(--sand);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(245, 239, 230, 0.1);
+  }
+  .testimonial-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--clay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--walnut);
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 17px;
+  }
+  .testimonial-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--cream);
+  }
+  .testimonial-role {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+
+  /* ========= CTA FINAL ========= */
+  .final-cta {
+    padding: 160px 0;
+    background: var(--cream);
+    text-align: center;
+    position: relative;
+  }
+  .final-cta-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .final-cta h2 {
+    font-size: clamp(44px, 6vw, 78px);
+    font-weight: 300;
+    line-height: 1.05;
+    margin: 28px 0 32px;
+  }
+  .final-cta h2 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .final-cta p {
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 580px;
+    margin: 0 auto 48px;
+    line-height: 1.55;
+  }
+
+  /* ========= FORMULARIO ========= */
+  .form-section {
+    padding: 120px 0;
+    background: var(--sand);
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .form-info h2 {
+    font-size: clamp(34px, 4vw, 48px);
+    font-weight: 300;
+    margin: 28px 0 24px;
+  }
+  .form-info h2 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .form-info p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+  .form-contact {
+    list-style: none;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .form-contact li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    font-size: 15px;
+    color: var(--walnut);
+  }
+  .form-contact .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--terracotta);
+  }
+  form.clarity-form {
+    background: var(--cream);
+    padding: 48px;
+    border-radius: 4px;
+    box-shadow: 0 30px 60px -20px rgba(92, 58, 33, 0.15);
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--walnut);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--cream);
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 0 14px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus {
+    border-bottom-color: var(--terracotta);
+  }
+  .form-field textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+  form.clarity-form .btn-primary {
+    width: 100%;
+    justify-content: center;
+    margin-top: 12px;
+    padding: 18px;
+  }
+  .form-privacy {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  /* ========= FOOTER ========= */
+  footer {
+    padding: 60px 0 40px;
+    background: var(--walnut);
+    color: var(--sand);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(245, 239, 230, 0.1);
+    margin-bottom: 28px;
+  }
+  footer .logo { color: var(--cream); }
+  footer .logo span { color: var(--clay); }
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .footer-links a {
+    font-size: 14px;
+    color: var(--sand);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--clay); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ========= ANIMATIONS ========= */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-text > * {
+    opacity: 0;
+    animation: fadeUp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  .hero-text .eyebrow { animation-delay: 0.1s; }
+  .hero-text h1 { animation-delay: 0.25s; }
+  .hero-text .hero-sub { animation-delay: 0.4s; }
+  .hero-text .hero-cta { animation-delay: 0.55s; }
+  .hero-text .hero-meta { animation-delay: 0.7s; }
+
+  .hero-visual {
+    opacity: 0;
+    animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.3s;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ========= RESPONSIVE ========= */
+  @media (max-width: 960px) {
+    .hero-grid,
+    .clarity-grid,
+    .form-grid,
+    .services-header { grid-template-columns: 1fr; gap: 56px; }
+    .hero-visual { height: 420px; }
+    .clarity-visual { height: 500px; }
+    .problem-list,
+    .services-grid,
+    .process-steps,
+    .testimonials { grid-template-columns: 1fr; gap: 20px; }
+    .process-steps::before { display: none; }
+    .nav-links { display: none; }
+    .hero { padding: 120px 0 80px; }
+    .problem, .clarity, .services, .process, .social, .final-cta, .form-section { padding: 90px 0; }
+  }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .hero-meta { gap: 28px; flex-wrap: wrap; }
+    form.clarity-form { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; gap: 20px; align-items: flex-start; }
+    .footer-bottom { flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">Estudio<span>·</span>Casa</div>
+    <ul class="nav-links">
+      <li><a href="#sesion">Sesión de Claridad</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<main>
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow">Interiorismo con criterio</span>
+        <h1>Diseño interior <em>con criterio</em>: para vivir mejor o rentabilizar tu propiedad.</h1>
+        <p class="hero-sub">Asesoramiento en interiorismo, reformas y puesta a punto para vivienda o alquiler. Te damos claridad, dirección y un plan realista.</p>
+        <div class="hero-cta">
+          <a href="#contacto" class="btn btn-primary">
+            Solicitar asesoramiento
+            <svg class="arrow" width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 6h15m0 0L11 1m5 5l-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+          <a href="#sesion" class="btn btn-ghost">Ver Sesión de Claridad</a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="hero-meta-num">España</span>
+            <span class="hero-meta-label">&amp; Perú</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-num">+10</span>
+            <span class="hero-meta-label">Años de experiencia</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-num">100%</span>
+            <span class="hero-meta-label">Proyectos a medida</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img">
+          <!-- Ilustración SVG de interior cálido -->
+          <svg viewBox="0 0 500 580" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#EADDC7"/>
+                <stop offset="100%" stop-color="#D4BFA0"/>
+              </linearGradient>
+              <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#8B5A3C"/>
+                <stop offset="100%" stop-color="#5C3A21"/>
+              </linearGradient>
+              <linearGradient id="couch" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#C97B5D"/>
+                <stop offset="100%" stop-color="#B85C3E"/>
+              </linearGradient>
+            </defs>
+            <!-- Pared -->
+            <rect width="500" height="420" fill="url(#wall)"/>
+            <!-- Suelo -->
+            <rect y="420" width="500" height="160" fill="url(#floor)"/>
+            <!-- Líneas de suelo (madera) -->
+            <line x1="0" y1="450" x2="500" y2="450" stroke="#2A1F14" stroke-width="0.5" opacity="0.3"/>
+            <line x1="0" y1="490" x2="500" y2="490" stroke="#2A1F14" stroke-width="0.5" opacity="0.3"/>
+            <line x1="0" y1="530" x2="500" y2="530" stroke="#2A1F14" stroke-width="0.5" opacity="0.3"/>
+            <!-- Ventana arqueada -->
+            <rect x="60" y="80" width="160" height="240" rx="80" fill="#F5EFE6" opacity="0.9"/>
+            <rect x="70" y="90" width="140" height="220" rx="70" fill="#EADDC7" opacity="0.4"/>
+            <line x1="140" y1="90" x2="140" y2="310" stroke="#5C3A21" stroke-width="1.5" opacity="0.5"/>
+            <line x1="70" y1="200" x2="210" y2="200" stroke="#5C3A21" stroke-width="1.5" opacity="0.5"/>
+            <!-- Planta -->
+            <rect x="250" y="280" width="60" height="70" fill="#5C3A21"/>
+            <ellipse cx="280" cy="240" rx="50" ry="55" fill="#6B6A43" opacity="0.85"/>
+            <ellipse cx="260" cy="220" rx="20" ry="30" fill="#8B8B5C" opacity="0.7"/>
+            <ellipse cx="300" cy="225" rx="18" ry="28" fill="#8B8B5C" opacity="0.7"/>
+            <!-- Lámpara -->
+            <line x1="400" y1="0" x2="400" y2="120" stroke="#5C3A21" stroke-width="1.5"/>
+            <path d="M 370 120 L 430 120 L 420 160 L 380 160 Z" fill="#C97B5D"/>
+            <ellipse cx="400" cy="180" rx="40" ry="8" fill="#F5EFE6" opacity="0.3"/>
+            <!-- Sofá -->
+            <rect x="80" y="380" width="280" height="80" rx="8" fill="url(#couch)"/>
+            <rect x="80" y="380" width="280" height="30" rx="8" fill="#B85C3E"/>
+            <rect x="95" y="395" width="80" height="60" rx="6" fill="#D4916F" opacity="0.8"/>
+            <rect x="185" y="395" width="80" height="60" rx="6" fill="#D4916F" opacity="0.8"/>
+            <rect x="275" y="395" width="80" height="60" rx="6" fill="#D4916F" opacity="0.8"/>
+            <!-- Mesa lateral -->
+            <rect x="380" y="420" width="60" height="50" fill="#5C3A21"/>
+            <rect x="385" y="425" width="50" height="6" fill="#8B5A3C"/>
+            <!-- Objeto decorativo sobre mesa -->
+            <circle cx="410" cy="410" r="12" fill="#EADDC7"/>
+            <!-- Cuadro -->
+            <rect x="280" y="100" width="120" height="150" fill="#5C3A21"/>
+            <rect x="290" y="110" width="100" height="130" fill="#B85C3E" opacity="0.7"/>
+            <circle cx="340" cy="160" r="25" fill="#EADDC7" opacity="0.6"/>
+            <!-- Alfombra -->
+            <ellipse cx="250" cy="520" rx="220" ry="30" fill="#8B5A3C" opacity="0.5"/>
+            <ellipse cx="250" cy="520" rx="180" ry="20" fill="#C97B5D" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="hero-tag">
+          <div class="hero-tag-label">Sesión de Claridad</div>
+          <div class="hero-tag-text">"De la duda a la acción en 90 minutos"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROBLEMA ========== -->
+<section class="problem">
+  <div class="container">
+    <span class="eyebrow reveal">Para ti, si sientes que...</span>
+    <h2 class="problem-title reveal">No sabes cómo empezar a transformar tu espacio. <em>Nosotros te guiamos.</em></h2>
+    <ul class="problem-list">
+      <li class="reveal"><span class="num">01</span>Tu casa ya no encaja contigo y no sabes por dónde empezar.</li>
+      <li class="reveal"><span class="num">02</span>No sabes qué estilo elegir ni cómo definirlo con claridad.</li>
+      <li class="reveal"><span class="num">03</span>Tienes mil ideas de Pinterest pero no sabes cómo unirlas.</li>
+      <li class="reveal"><span class="num">04</span>Quieres mejorar una propiedad para alquilarla mejor.</li>
+    </ul>
+    <div class="problem-cta reveal">
+      <p>"No necesitas más inspiración. Necesitas dirección."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SESIÓN DE CLARIDAD ========== -->
+<section class="clarity" id="sesion">
+  <div class="container">
+    <div class="clarity-grid">
+      <div class="clarity-visual reveal">
+        <div class="clarity-card-main">
+          <svg viewBox="0 0 400 480" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#F5EFE6" stroke-width="0.5" opacity="0.3"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="480" fill="#B85C3E"/>
+            <rect width="400" height="480" fill="url(#grid)"/>
+            <!-- Plano/croquis -->
+            <g stroke="#F5EFE6" stroke-width="2" fill="none" opacity="0.85">
+              <rect x="60" y="90" width="280" height="300"/>
+              <line x1="60" y1="200" x2="200" y2="200"/>
+              <line x1="200" y1="90" x2="200" y2="300"/>
+              <line x1="200" y1="300" x2="340" y2="300"/>
+            </g>
+            <!-- Muebles esquemáticos -->
+            <g fill="#F5EFE6" opacity="0.9">
+              <rect x="80" y="110" width="90" height="40" rx="3"/>
+              <rect x="80" y="220" width="50" height="60" rx="3"/>
+              <circle cx="270" cy="145" r="20"/>
+              <rect x="230" y="220" width="90" height="30" rx="3"/>
+              <rect x="220" y="320" width="110" height="50" rx="3"/>
+            </g>
+            <!-- Anotaciones estilo a mano -->
+            <text x="210" y="60" font-family="Fraunces" font-style="italic" font-size="18" fill="#F5EFE6">propuesta 01</text>
+            <text x="85" y="175" font-family="Manrope" font-size="11" fill="#F5EFE6" opacity="0.8">SALÓN</text>
+            <text x="225" y="175" font-family="Manrope" font-size="11" fill="#F5EFE6" opacity="0.8">COMEDOR</text>
+            <text x="95" y="305" font-family="Manrope" font-size="11" fill="#F5EFE6" opacity="0.8">COCINA</text>
+            <text x="255" y="395" font-family="Manrope" font-size="11" fill="#F5EFE6" opacity="0.8">DORMITORIO</text>
+            <!-- Flecha -->
+            <path d="M 340 420 Q 370 440 355 460" stroke="#F5EFE6" stroke-width="1.5" fill="none" opacity="0.7"/>
+            <path d="M 350 455 L 355 460 L 360 454" stroke="#F5EFE6" stroke-width="1.5" fill="none" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="clarity-card-float">
+          <div class="label">Formato</div>
+          <h4>Online o presencial</h4>
+          <p>Sales con estilo definido, ideas concretas y próximos pasos claros.</p>
+        </div>
+      </div>
+
+      <div class="clarity-text reveal">
+        <span class="eyebrow">Nuestro servicio estrella</span>
+        <h2>Sesión de <em>Claridad</em> en interiorismo</h2>
+        <p class="clarity-lead">Una sesión de 60 a 90 minutos para pasar de la duda a la acción. Sin compromisos, sin paquetes inflados. Solo dirección real para tu espacio.</p>
+        <ul class="clarity-features">
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Definición de estilo y concepto</strong> — dejamos de improvisar y damos coherencia visual a tu proyecto.</div>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Distribución y aprovechamiento del espacio</strong> — cada metro cuadrado trabajando a tu favor.</div>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Selección de materiales, colores y mobiliario</strong> — decisiones claras y accionables.</div>
+          </li>
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Informe visual + recomendaciones</strong> — te llevas un plan realista por escrito.</div>
+          </li>
+        </ul>
+        <div class="clarity-price">
+          <span class="clarity-duration">60–90 min</span>
+          <span class="clarity-separator"></span>
+          <span class="clarity-format">Consultoría online</span>
+        </div>
+        <a href="#contacto" class="btn btn-primary">
+          Quiero claridad para mi espacio
+          <svg class="arrow" width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 6h15m0 0L11 1m5 5l-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICIOS ========== -->
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="services-header">
+      <div class="reveal">
+        <span class="eyebrow">Resto de servicios</span>
+        <h2>Cuando ya tienes claridad, <em>ejecutamos contigo.</em></h2>
+      </div>
+      <p class="reveal">Desde el diseño integral hasta la puesta a punto para alquiler. Cada proyecto con su escala, cada cliente con su ritmo.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-number">01</span>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Diseño e <em>interiorismo</em> completo</h3>
+        <p>Para quien quiere delegar todo el proceso creativo y técnico. Proyecto integral desde la primera idea hasta el último detalle.</p>
+        <span class="service-tag">España &amp; Perú</span>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-number">02</span>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 6l-4 4m0 0l-4 4m4-4l4 4m-4-4L6 6m8 0l4-4m0 0l2 2m-2-2l-2-2M20 20l-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3><em>Reformas</em> con acompañamiento</h3>
+        <p>Transformación real del espacio. Coordinamos gremios, materiales y plazos para que todo salga como lo imaginas.</p>
+        <span class="service-tag">Obra + dirección</span>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-number">03</span>
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-6 9 6M5 10v10h14V10M9 20v-6h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Puesta a punto para <em>alquiler</em></h3>
+        <p>Optimización rápida para rentabilidad. Hacemos que tu propiedad destaque y se alquile mejor, sin sobreinvertir.</p>
+        <span class="service-tag">ROI inmobiliario</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROCESO ========== -->
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="process-header reveal">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Un proceso <em>claro</em>, sin sorpresas.</h2>
+      <p>Cuatro pasos sencillos para llevarte de la duda a la acción, con tu ritmo y tu presupuesto.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="process-num">01</div>
+        <h4>Escuchamos tu caso</h4>
+        <p>Entendemos tu espacio, tu estilo y tu objetivo real.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">02</div>
+        <h4>Definimos estilo y necesidades</h4>
+        <p>Aclaramos qué quieres y qué necesitas de verdad.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">03</div>
+        <h4>Creamos la propuesta</h4>
+        <p>Un plan visual y escrito, concreto y accionable.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">04</div>
+        <h4>Acompañamos la ejecución</h4>
+        <p>Si lo necesitas, estamos contigo hasta el final.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRUEBA SOCIAL ========== -->
+<section class="social">
+  <div class="container">
+    <div class="social-header reveal">
+      <span class="eyebrow">Clientes que encontraron claridad</span>
+      <h2>De la duda <em>a la casa soñada.</em></h2>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Llevaba meses atascada con referencias de Pinterest. En una sola sesión salí con un estilo definido y una lista de compras clara. Ojalá lo hubiera hecho antes.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">LM</div>
+          <div>
+            <div class="testimonial-name">Laura Martín</div>
+            <div class="testimonial-role">Piso en Madrid</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Compré un piso para alquilar y no sabía dónde invertir. Me dieron recomendaciones concretas y priorizadas. En tres semanas ya estaba alquilado por encima del precio de mercado.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">DC</div>
+          <div>
+            <div class="testimonial-name">Daniel Cortés</div>
+            <div class="testimonial-role">Inversor, Barcelona</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Lo que más valoro: no intentaron venderme una reforma que no necesitaba. Me ayudaron a entender qué sí merecía la pena cambiar y qué no. Honestidad total.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PR</div>
+          <div>
+            <div class="testimonial-name">Patricia Reyes</div>
+            <div class="testimonial-role">Casa en Lima</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA FINAL ========== -->
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta-inner reveal">
+      <span class="eyebrow" style="justify-content:center;">Última llamada</span>
+      <h2>Transforma tu espacio con <em>decisiones claras.</em></h2>
+      <p>Diseño con sentido, no solo estética. Te ayudamos a pasar de la duda a la acción en una sola sesión.</p>
+      <a href="#contacto" class="btn btn-primary" style="padding:20px 40px; font-size:16px;">
+        Reservar mi Sesión de Claridad
+        <svg class="arrow" width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 6h15m0 0L11 1m5 5l-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FORMULARIO ========== -->
+<section class="form-section" id="contacto">
+  <div class="container">
+    <div class="form-grid">
+      <div class="form-info reveal">
+        <span class="eyebrow">Empecemos</span>
+        <h2>Cuéntanos sobre <em>tu espacio.</em></h2>
+        <p>Responde unas preguntas rápidas y te contactamos en menos de 24 horas para agendar tu sesión.</p>
+        <ul class="form-contact">
+          <li><span class="dot"></span>Respuesta en menos de 24h</li>
+          <li><span class="dot"></span>Sin compromiso ni letra pequeña</li>
+          <li><span class="dot"></span>Atención en España y Perú</li>
+        </ul>
+      </div>
+      <form class="clarity-form reveal" onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.');">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" required placeholder="Tu nombre">
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" required placeholder="tu@email.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" placeholder="+34 600 000 000">
+          </div>
+          <div class="form-field">
+            <label for="service">Me interesa</label>
+            <select id="service">
+              <option>Sesión de Claridad</option>
+              <option>Diseño integral</option>
+              <option>Reforma</option>
+              <option>Puesta a punto alquiler</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field full">
+          <label for="message">Cuéntanos tu proyecto</label>
+          <textarea id="message" placeholder="Tipo de espacio, metros, objetivo, dudas..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Enviar solicitud
+          <svg class="arrow" width="18" height="12" viewBox="0 0 18 12" fill="none"><path d="M1 6h15m0 0L11 1m5 5l-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <p class="form-privacy">Al enviar aceptas que tratemos tus datos para contactarte. Nunca los compartimos.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="logo">Estudio<span>·</span>Casa</div>
+      <ul class="footer-links">
+        <li><a href="#sesion">Sesión de Claridad</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Estudio Casa · Interiorismo con criterio</span>
+      <span>Madrid · Lima · Online</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal con IntersectionObserver
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 40);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
